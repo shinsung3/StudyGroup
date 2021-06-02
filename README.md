@@ -25,3 +25,9 @@ StudyGroup
 ### 3
 
 - 게시판 형태로 수정할 수 있는 텍스트 에디터 추가할 예정
+  - `pip install django-ckeditor`
+  - ![image-20210603012728029](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603012728029.png)
+  - ckeditor는 관리자 페이지에서 보드를 만들어서 입력할 수 있도록 나타내줌
+  - ![image-20210603014020624](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603014020624.png)
+  - 이미지는 어디로 저장되었을까?
+  - ![image-20210603014146647](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603014146647.png)

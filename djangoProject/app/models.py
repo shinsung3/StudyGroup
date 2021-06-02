@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
-from django.db.models.fields.related import OneToOneField
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class MyStudy(models.Model):
@@ -15,6 +16,7 @@ class MyStudy(models.Model):
     img_url = models.CharField(max_length=200)
     oneLine = models.CharField(max_length=200)
     duration = models.CharField(max_length=200)
+    board_text = RichTextUploadingField(null=True)
 
     def publish(self):
         self.save()

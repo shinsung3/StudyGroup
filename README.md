@@ -31,3 +31,12 @@ StudyGroup
   - ![image-20210603014020624](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603014020624.png)
   - 이미지는 어디로 저장되었을까?
   - ![image-20210603014146647](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603014146647.png)
+
+
+
+### 4
+
+- Django Query
+  - 카테고리별로 분류해서 보고 싶다면 django에서 filter내부에서 하면 됨.
+  - 이건 그냥 Python 문법임
+  - ![image-20210603015207488](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603015207488.png)

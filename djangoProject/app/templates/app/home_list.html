@@ -1,6 +1,12 @@
 {% extends 'app/base.html'%}
 {% block content %}
 
-{{ studyList }}
+
+    <h2>현재 진행되는 스터디 모임</h2>
+    {% for study in studyList %}
+        <img src="{{ study.img_url }}" width="450px"/>
+        {{ study.title }}
+        <br/>
+    {% endfor %}
 
 {% endblock %}

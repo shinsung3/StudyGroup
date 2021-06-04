@@ -40,3 +40,11 @@ StudyGroup
   - 카테고리별로 분류해서 보고 싶다면 django에서 filter내부에서 하면 됨.
   - 이건 그냥 Python 문법임
   - ![image-20210603015207488](C:\Users\tlstj\AppData\Roaming\Typora\typora-user-images\image-20210603015207488.png)
+
+
+
+### 5
+
+- 장고 템플릿
+  - 메인 페이지 꾸미기
+  - nav 바 만들기 성공

@@ -1,0 +1,64 @@
+{% extends 'app/base.html'%}
+{% block content %}
+<form method="POST" action="{% url 'create_study'%}" style="width:700px; margin:auto; padding:40px; margin-top: 100px;">
+    {% csrf_token %} <!-- 보안 처리 -->
+    <h3><b>스터디 생성하기</b></h3>
+    <hr/>
+    <div class="form-group">
+        <label>작성자</label>
+        <input type="text" name="author" class="form-control" value="{{user}}" id="id_title" readonly>
+    </div>
+    <div class="form-group">
+        <label>스터디 제목</label>
+        <input type="text" name="title" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>지역</label>
+        <input type="text" name="region" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>모집 인원</label>
+        <input type="text" name="totalMember" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>오픈채팅방 링크</label>
+        <input type="text" name="kakao_url" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>온/오프라인</label>
+        <input type="text" name="onOff" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>스터디 이미지 링크</label>
+        <input type="text" name="img_url" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>한 줄 소개 글</label>
+        <input type="text" name="oneLine" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>기간 (모든 날짜를 입력해주세요 (예시 : 2021.06.30 ~ 2021.12.30))</label>
+        <input type="text" name="duration" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>스터디 기간(모든 날짜를 입력해주세요 (예시 : 2021.06.30 ~ 2021.12.30))</label>
+        <input type="text" name="study_duration" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>스터디 소개 내용</label>
+        <input type="textarea" name="board_text" class="form-control" id="id_title">
+        <!-- {{StudyForm.board_text}} -->
+    </div>
+    <div class="form-group">
+        <label>현재 인원 수</label>
+        <input type="text" name="count" class="form-control" id="id_title">
+    </div>
+    <div class="form-group">
+        <label>카테고리 (어학/취업/학습/기타)</label>
+        <input type="text" name="category" class="form-control" id="id_title">
+    </div>
+    <!-- {{StudyForm.as_p}} -->
+    <button type="submit">저장</button>
+</form>
+
+{% endblock %}

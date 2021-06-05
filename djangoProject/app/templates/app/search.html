@@ -1,8 +1,8 @@
 {% extends 'app/base.html'%}
 {% block content %}
 <div>
-    <h3 style="width:500px; margin:200px; margin:auto; margin-top: 100px;"> 강의 검색 </h3>
-    <form method="POST" action="{% url 'search'%}" style="width:500px; margin:200px; margin:auto; margin-top: 60px; margin-bottom: 20px;">
+    <h3 style="width:500px; margin:200px; margin:auto; margin-top: 100px;"> <b>스터디 검색 </h3>
+    <form method="POST" action="{% url 'search'%}" style="width:500px; margin:200px; margin:auto; margin-top: 2px; margin-bottom: 20px;">
         {% csrf_token %} <!-- 보안 처리 -->
         <div class="form-group">
             <input name="text" type="text" class="form-control">

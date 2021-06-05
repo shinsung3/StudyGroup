@@ -17,3 +17,10 @@ def study_list(request):
     return render(request, 'app/study_list.html', {'studyList':studyInfo,
     'languageList':language_study,'jobList':job_study
     ,'schoolList':school_study,'etcList':etc_study})
+
+def login(request):
+    return render(request, 'app/login.html')
+
+
+def join(request):
+    return render(request, 'app/join.html')

@@ -13,7 +13,7 @@
         <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+        <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
         <style>
             *{
                 margin: 0px;
@@ -71,8 +71,12 @@
                 <ul>
                     <a href="/"><li id="click1">HOME</li></a>
                     <a href="/study_list"><li id="click1">STUDY</li></a>
-                    <a href="/my_group"><li id="click1">MY GROUP</li></a>
-                    <a href="/login"><li id="click1">LOGIN</li></a>
+                    {% if user.is_authenticated %} <!-- 로그인 여부 확인-->
+                        <a href="/my_group"><li id="click1">MY GROUP</li></a>
+                        <li id="click1"><i class="fas fa-user" style="font-size: 15px; color:white"></i></li>
+                    {% else %}
+                        <a href="/login"><li id="click1">LOGIN</li></a>
+                    {% endif %}
                     <!-- <a href="/login/join"><li id="click1">JOIN US</li></a> -->
                     <a href="/search"><li id="click1">검색</li></a>
                 </ul>

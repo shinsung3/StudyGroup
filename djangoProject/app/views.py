@@ -29,6 +29,18 @@ def study_list(request):
     ,'schoolList':school_study,'etcList':etc_study})
 
 def login(request):
+
+    if request.method == "POST":
+        id = request.POST["email"]
+        pw = request.POST["pwd"]
+        user = auth.authenticate(request, username=id, password=pw)
+
+        if user is None:
+            message = "아이디가 또는 비밀번호가 틀렸습니다."
+            return render(request, 'app/login.html',{"messageID":message})
+        else:
+                auth.login(request, user)
+                return redirect("/")
     return render(request, 'app/login.html')
 
 

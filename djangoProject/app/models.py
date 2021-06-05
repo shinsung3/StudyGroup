@@ -12,7 +12,7 @@ class MyStudy(models.Model):
     totalMember = models.CharField(max_length=200)
     kakao_url = models.CharField(max_length=200)
     onOff = models.CharField(max_length=200)
-    img_url = models.CharField(max_length=200)
+    img_url = models.CharField(max_length=200, null=True)
     oneLine = models.CharField(max_length=200)
     duration = models.CharField(max_length=200)
     board_text = RichTextUploadingField(null=True)

@@ -3,10 +3,26 @@
 
 
     <h2>현재 진행되는 스터디 모임</h2>
+    <div class="row">
     {% for study in studyList %}
-        <img src="{{ study.img_url }}" width="450px"/>
-        {{ study.title }}
-        <br/>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+            <img src="{{study.img_url}}" alt="{{study.img_url}}">
+            <div class="caption">
+                <h3>{{study.title}}</h3>
+                <!-- <p>소개글 {{study.oneLine}}</p>
+                <p>{{study.contents}}</p>
+                {{study.board_text}} 
+                <p>모집 기간 : {{study.duration}}</p>
+                <p>오픈 채팅방 : {{study.kakao_url}}</p>
+                <p>온/오프라인 : {{study.onOff}}</p>
+                <p>총 인원 : {{study.totalMember}}명</p>
+                <p>지역 : {{study.region}}</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+            </div>
+            </div>
+        </div>
     {% endfor %}
-
+            
+    </div>
 {% endblock %}

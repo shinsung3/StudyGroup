@@ -1,0 +1,24 @@
+{% extends 'app/base.html'%}
+{% block content %}
+<div>
+    <h3 style="width:500px; margin:200px; margin:auto; margin-top: 100px;"> 마이페이지 </h3>
+    <form method="POST" action="{% url 'my_page'%}" style="width:500px; margin:200px; margin:auto; margin-top: 60px; margin-bottom: 200px;">
+        {% csrf_token %} <!-- 보안 처리 -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">로그인 이메일</label>
+            <input name="email" type="email" class="form-control" id="blankAlert exampleInputEmail1" value="{{user}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName">닉네임</label>
+            <input name="name" type="text" class="form-control" id="blankAlert exampleInputName" value="{{userID.first_name}}">
+            <p id="checkPoint" style="color:red">{{nameCompare1}}</p>
+        </div>
+        <button type="submit" id="submit" class="btn btn-default">닉네임 수정</button>
+    </form>
+</div>
+<script>
+    function function1(){
+        alert("중복되었습니다.")
+    }
+</script>
+{% endblock %}

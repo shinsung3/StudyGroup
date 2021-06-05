@@ -136,3 +136,22 @@ def qna_remove(request, pk):
     if request.method == "POST":
         QnA1.objects.get(pk=pk).delete()
         return redirect("/study_list")
+
+def my_page(request):
+    nameCheck = User.objects.filter()
+    if request.method=="POST":
+        email = request.POST['email']
+        name = request.POST['name']
+        c = 0
+        for name1 in nameCheck:
+            print(name1.first_name)
+            if name1.first_name==name:
+                c = 1
+        if c!=1:
+            User.objects.update(first_name=name)
+            return redirect("/")
+        else :
+            return render(request, 'app/my_page.html', {'nameCompare1':"이미 존재하는 닉네임입니다"})
+
+
+    return render(request, "app/my_page.html", {'userID':nameCheck})

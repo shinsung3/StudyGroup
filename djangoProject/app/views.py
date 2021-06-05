@@ -3,6 +3,14 @@ from .models import MyStudy
 from django.contrib.auth.models import User
 from django.contrib import auth
 
+# SMTP 관련 인증
+# from django.contrib.sites.shortcuts import get_current_site
+# from django.template.loader import render_to_string
+# from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+# from django.core.mail import EmailMessage
+# from django.utils.encoding import force_bytes, force_text
+# from .tokens import account_activation_token
+
 # Create your views here.
 def home_list(request):
     # 어학 스터디 모임만 가져올 수 있음
@@ -26,6 +34,7 @@ def login(request):
 
 def join(request):
 
+    nameCheck = User.objects.filter()
     print("join 실행")
     if request.method== 'POST': #form이 post로 던지면 여기서 처리
         print("여기는 포스트 요청")
@@ -35,7 +44,45 @@ def join(request):
         # print(name)
         # print(email)
         # print(pwd)
-        User.objects.create_user(username=email, password=pwd, first_name=name)
-        return redirect("/")
-    print("join 마지막")
-    return render(request, 'app/join.html')
+        c = 0
+        for name1 in nameCheck:
+            print(name1.first_name)
+            if name1.first_name==name:
+                c = 1
+        if c!=1:
+            User.objects.create_user(username=email, password=pwd, first_name=name)
+            return redirect("/")
+        else :
+            return render(request, 'app/join.html', {'nameCompare1':"이미 존재하는 닉네임입니다"})
+        # user.is_active = False # 유저 비활성화
+        # user.save()
+        # current_site = get_current_site(request)
+        # message = render_to_string('app/activation_email.html', {
+        #     'user': user,
+        #     'domain': current_site.domain,
+        #     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        #     'token': account_activation_token.make_token(user),
+        # })
+        # mail_title = "계정 활성화 확인 이메일"
+        # mail_to = email
+        # email = EmailMessage(mail_title, message, to=[mail_to])
+        # email.send()
+    else:
+        print("join 마지막")
+        return render(request, 'app/join.html')
+
+# # 계정 활성화 함수(토큰을 통해 인증)
+# def activate(request, uidb64, token):
+#     try:
+#         uid = force_text(urlsafe_base64_decode(uidb64))
+#         user = User.objects.get(pk=uid)
+#     except(TypeError, ValueError, OverflowError, User.DoesNotExsit):
+#         user = None
+#     if user is not None and account_activation_token.check_token(user, token):
+#         user.is_active = True
+#         user.save()
+#         auth.login(request, user)
+#         return redirect("/")
+#     else:
+#         return render(request, 'app/join.html')
+#     return

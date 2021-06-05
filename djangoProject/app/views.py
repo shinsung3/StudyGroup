@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import MyStudy
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -98,3 +98,8 @@ def join(request):
 #     else:
 #         return render(request, 'app/join.html')
 #     return
+
+def study_list_detail(request, pk):
+    studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
+    print(studyDetail)
+    return render(request, 'app/detail.html', {'studyDetails':studyDetail})

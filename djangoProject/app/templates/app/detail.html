@@ -1,0 +1,16 @@
+{% extends 'app/base.html'%}
+{% block content %}
+    <style>
+        .contents{
+            width:1000px;
+            margin: auto;
+            padding: 100px;
+        }
+    </style>
+    <div class="contents">
+        <h1>{{studyDetails.title}}</h1>
+        <div style="border: 3px solid gray;">
+            {{studyDetails.board_text | safe}} <!--html 인코딩-->
+        </div>
+    </div>
+{% endblock %}

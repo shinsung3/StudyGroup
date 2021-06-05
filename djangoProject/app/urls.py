@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.home_list, name='home_list'),
     path('study_list/', views.study_list, name='study_list'),
+    path('study_list/<int:pk>', views.study_list_detail, name='study_list_detail'),
     path('login/', views.login, name='login'),
     path('login/join/', views.join, name='join'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name="password_reset"),

@@ -105,6 +105,7 @@ def logout(request):
 
 def study_list_detail(request, pk):
     studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
+    contents = QnA1.objects.filter(study=studyDetail)
     auth.authenticate()
     if request.method == 'POST':
         writer = request.POST['writer']

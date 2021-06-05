@@ -1,0 +1,79 @@
+{% extends 'app/base.html'%}
+{% block content %}
+    <style>
+        div{
+            float:left;
+        }
+        .left{
+            width:30%;
+        }
+        .left ul li{
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid gray;
+        }
+        .right{
+            width:70%;
+        }
+    </style>
+
+    <div class="left">
+        <ul>
+            <li id="all">전체</li>
+            <li id="lang">어학</li>
+            <li id="job">취업</li>
+            <li id="school">학습</li>
+            <li id="etc">기타</li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="row all">
+            {% for study in studyList %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="{{study.img_url}}" alt="{{study.img_url}}">
+                        <div class="caption">
+                            <h3>{{study.title}}</h3>
+                            <!-- <p>소개글 {{study.oneLine}}</p>
+                            <p>{{study.contents}}</p>
+                            {{study.board_text}}  -->
+                            <p>모집 기간 : {{study.duration}}</p>
+                            <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
+                            <p>온/오프라인 : {{study.onOff}}</p> -->
+                            <p>총 인원 : {{study.totalMember}}명</p>
+                            <p>지역 : {{study.region}}</p>
+                            <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> --> 
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row lang">
+            {% for study in languageList %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="{{study.img_url}}" alt="{{study.img_url}}">
+                        <div class="caption">
+                            <h3>{{study.title}}</h3>
+                            <!-- <p>소개글 {{study.oneLine}}</p>
+                            <p>{{study.contents}}</p>
+                            {{study.board_text}}  -->
+                            <p>모집 기간 : {{study.duration}}</p>
+                            <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
+                            <p>온/오프라인 : {{study.onOff}}</p> -->
+                            <p>총 인원 : {{study.totalMember}}명</p>
+                            <p>지역 : {{study.region}}</p>
+                            <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> --> 
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        $('#lang').click(function(){
+            $('.row').hide();
+            $('.lang').show();
+        });
+    </script>
+{% endblock %}

@@ -73,6 +73,7 @@
                     <a href="/study_list"><li id="click1">STUDY</li></a>
                     {% if user.is_authenticated %} <!-- 로그인 여부 확인-->
                         <a href="/my_group"><li id="click1">MY GROUP</li></a>
+                        <a href="/logout"><li id="click1">LOGOUT</li></a>
                         <li id="click1"><i class="fas fa-user" style="font-size: 15px; color:white"></i></li>
                     {% else %}
                         <a href="/login"><li id="click1">LOGIN</li></a>

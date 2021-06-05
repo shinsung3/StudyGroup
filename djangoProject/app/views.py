@@ -39,8 +39,8 @@ def login(request):
             message = "아이디가 또는 비밀번호가 틀렸습니다."
             return render(request, 'app/login.html',{"messageID":message})
         else:
-                auth.login(request, user)
-                return redirect("/")
+            auth.login(request, user)
+            return redirect("/")
     return render(request, 'app/login.html')
 
 
@@ -99,7 +99,27 @@ def join(request):
 #         return render(request, 'app/join.html')
 #     return
 
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
+
 def study_list_detail(request, pk):
     studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
-    print(studyDetail)
+    auth.authenticate()
+    print(studyDetail.author)
     return render(request, 'app/detail.html', {'studyDetails':studyDetail})
+
+def updateStudy(request, pk):
+    studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
+    studyDetail.count += 1
+    studyDetail.save()
+    print(studyDetail.count)
+    url = "/study_list/"+str(pk)
+    return redirect(url)
+
+def updateFinish(request, pk):
+    studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
+    studyDetail.is_finish = "종료"
+    studyDetail.save()
+    url = "/study_list/"+str(pk)
+    return redirect(url)

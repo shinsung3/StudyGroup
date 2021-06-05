@@ -5,12 +5,111 @@
             width:1000px;
             margin: auto;
             padding: 100px;
+            text-align: center;
+        }
+        a:hover{
+            color:red;
         }
     </style>
     <div class="contents">
         <h1>{{studyDetails.title}}</h1>
-        <div style="border: 3px solid gray;">
+        <div>
+            <h5><b>작성자</b> {{studyDetails.author}} &nbsp<i class="fas fa-address-card" style="font-size: 20px;"></i></h5>
+            {% if studyDetails.is_finish == "종료" %}
+                <b style="color: grey;">모집 마감 되었습니다.</b>
+            {% endif %}
+            <table class="table table-condensed" width="500px;">
+                <tr class="active">
+                    <td><b>한줄 소개</b></td>
+                    <td>{{studyDetails.oneLine}}</td>
+                </tr>
+                <tr>
+                    <td><b>지역</b></td>
+                    <td>{{studyDetails.region}}</td>
+                </tr>
+                <tr class="success">
+                    <td><b>모집 인원</b></td>
+                    <td>{{studyDetails.count}} / {{studyDetails.totalMember}}</td>
+                </tr>
+                <tr>
+                    <td><b>온/오프라인</b></td>
+                    <td>{{studyDetails.onOff}}</td>
+                </tr>
+                <tr class="warning">
+                    <td><b>모집 기간</b></td>
+                    <td>
+                        {% if studyDetails.is_finish == "종료" %}
+                            <b style="color: grey;">모집 마감 되었습니다.</b>
+                        {% else %}
+                            {{studyDetails.duration}} &nbsp
+                            {% if user.is_authenticated %} <!-- 로그인 여부 확인-->
+                                {% if user == studyDetails.author %}
+                                    <button style="border: 3px solid darkgoldenrod; background-color: darkgoldenrod; color:white">
+                                        <a href="{% url 'update' pk=studyDetails.pk %}" style="text-decoration: none;" id="tag">모집마감</a>
+                                    </button>
+                                {% else %}
+                                    <button style="border: 3px solid darkgoldenrod; background-color: darkgoldenrod; color:white">
+                                        <a href="{% url 'update' pk=studyDetails.pk %}" style="text-decoration: none;" id="tag">참여하기 (click!)</a>
+                                    </button>
+                                {% endif %}
+                            {% else %}
+                                <b><a style="color:brown" href="{% url 'login' %}">참여를 원하면 로그인 해주세요.</a></b>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>카테고리</b></td>
+                    <td>{{studyDetails.category}}</td>
+                </tr>
+                <tr class="danger">
+                    <td><b>오픈채팅방 링크</b></td>
+                    {% if studyDetails.is_finish == "종료" %}
+                        <td><b style="color: grey;">모집 마감 되었습니다.</b></td>
+                    {% else %}
+                        {% if user.is_authenticated %} <!-- 로그인 여부 확인-->
+                            <td>{{studyDetails.kakao_url}}</td>
+                        {% else %}
+                            <td><b><a style="color:brown" href="{% url 'login' %}">로그인 후 확인해주세요.</a></b></td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td><b>스터디 기간</b></td>
+                    <td>{{studyDetails.study_duration}}</td>
+                </tr>
+            </table>
+            <hr/>
+        </div>
+        <div>
             {{studyDetails.board_text | safe}} <!--html 인코딩-->
         </div>
     </div>
+    <div>
+        <div style="width:600px; margin:200px; margin:auto; margin-bottom: 200px;">
+            <span><b style="font-size: 35px;">Q & A </b> &nbsp</span>
+            <hr/>
+            {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'login'%}">
+                <div style="padding: 5px;">
+                    <button style="float:right;" id="submit" type="submit">작성하기</button>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">질문하기</label>
+                    <input id="blankAlert" name="pwd" type="textfield" class="form-control" id="exampleInputPassword1" placeholder="암호">
+                </div>
+            </form>
+            {% else %}
+            <div style="padding: 5px;">
+                <button style="float:right" id="submit" onclick="clickEvent()">작성하기</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        function clickEvent(){
+            var user = {user}
+            alert("로그인 해주세요")
+        }
+    </script>
 {% endblock %}

@@ -28,3 +28,10 @@ class MyStudy(models.Model):
 
     def __str__(self):
         return self.title
+
+class QnA(models.Model):
+    num = models.IntegerField()
+    contents = models.CharField(max_length=500)
+
+    def publish(self):
+        self.save()

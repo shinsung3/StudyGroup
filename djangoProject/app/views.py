@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import MyStudy
+from .models import MyStudy, QnA
 from django.contrib.auth.models import User
 from django.contrib import auth
 

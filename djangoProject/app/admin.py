@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MyStudy
+from .models import MyStudy, QnA
 # Register your models here.
 
 # PK, TITLE 보여주기

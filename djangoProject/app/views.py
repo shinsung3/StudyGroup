@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import MyStudy, QnA
+from .models import MyStudy, QnA1
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -106,8 +106,15 @@ def logout(request):
 def study_list_detail(request, pk):
     studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
     auth.authenticate()
-    print(studyDetail.author)
-    return render(request, 'app/detail.html', {'studyDetails':studyDetail})
+    if request.method == 'POST':
+        writer = request.POST['writer']
+        content = request.POST['content']
+        QnA1.objects.create(study = studyDetail,
+        writer=writer, contents=content)
+        url = "/study_list/"+str(pk)
+        return redirect("/study_list/"+str(pk))
+    return render(request, 'app/detail.html', {'studyDetails':studyDetail,
+        'contents':contents})
 
 def updateStudy(request, pk):
     studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기

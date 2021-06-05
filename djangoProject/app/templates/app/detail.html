@@ -94,17 +94,18 @@
             <span><b style="font-size: 35px;">Q & A </b> &nbsp</span>
             <hr/>
             {% if user.is_authenticated %}
-            <form method="POST" action="{% url 'login'%}">
+            <form method="POST" action="{% url 'study_list_detail' pk=studyDetails.pk %}">
+                {% csrf_token %} <!-- 보안 처리 -->
                 <div style="padding: 5px;">
                     <button style="float:right;" id="submit" type="submit">작성하기</button>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">질문하기</label>
-                    <input id="blankAlert" name="pwd" type="text" class="form-control" id="exampleInputPassword1" placeholder="질문을 작성해주세요">
+                    <input id="blankAlert" name="content" type="text" class="form-control" placeholder="질문을 작성해주세요">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">글쓴이</label>
-                    <input id="blankAlert" name="pwd" type="text" class="form-control" id="exampleInputPassword1" value="{{user}}" readonly>
+                    <input id="blankAlert" name="writer" type="text" class="form-control" value="{{user}}">
                 </div>
             </form>
             {% else %}

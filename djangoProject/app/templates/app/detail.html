@@ -98,6 +98,10 @@
                     <span>질문 : {{i.contents}}</span>
                     <br/>
                     <span>작성자 : {{i.writer}}</span>
+                    <form method="POST" action="{% url 'qna_remove' pk=i.pk %}">
+                        {% csrf_token %} <!-- 보안 처리 -->
+                        <button>삭제하기</button>
+                    </form>
                 </div>
             {% endfor %}
             {% if user.is_authenticated %}

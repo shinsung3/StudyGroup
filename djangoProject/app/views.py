@@ -109,7 +109,7 @@ def study_list_detail(request, pk):
     auth.authenticate()
     if request.method == 'POST':
         writer = request.POST['writer']
-        content = request.POST['content']
+        content = request.POST['contents']
         QnA1.objects.create(study = studyDetail,
         writer=writer, contents=content)
         url = "/study_list/"+str(pk)
@@ -131,3 +131,8 @@ def updateFinish(request, pk):
     studyDetail.save()
     url = "/study_list/"+str(pk)
     return redirect(url)
+
+def qna_remove(request, pk):
+    if request.method == "POST":
+        QnA1.objects.get(pk=pk).delete()
+        return redirect("/study_list")

@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('login/join/', views.join, name='join'),
+    path('qna_remove/<int:pk>', views.qna_remove, name='qna_remove'),
     path('update/<int:pk>', views.updateStudy, name='update'),
     path('update2/<int:pk>', views.updateFinish, name='updateFinish'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name="password_reset"),

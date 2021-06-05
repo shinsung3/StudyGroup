@@ -155,3 +155,11 @@ def my_page(request):
 
 
     return render(request, "app/my_page.html", {'userID':nameCheck})
+
+def search(request):
+    if request.method=="POST":
+        text = request.POST['text']
+        studyInfo = MyStudy.objects.filter(title__contains=text)
+        print(studyInfo)
+        return render(request, "app/search.html", {'studySearch':studyInfo})
+    return render(request, "app/search.html")

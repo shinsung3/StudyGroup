@@ -15,8 +15,42 @@
         .right{
             width:70%;
         }
-    </style>
+        #center{
+            margin: 0 auto;
+            margin: 20px;
+            padding: 10px;
+            margin-left: 35%;
 
+        }
+        #a{
+            margin: 10px;
+            padding: 10px;
+            color: red;
+        }
+    </style>
+    <!-- <div>
+        <div id="center">
+            <span id="all"style="
+            margin: 10px;
+            padding: 10px;
+            color: red;"><b>전체</b></span>
+            <span id="lang" style="
+            margin: 10px;
+            padding: 10px;
+            color: red;"><b>어학</b></span>
+            <span id="a job" style="
+            margin: 10px;
+            padding: 10px;
+            color: red;"><b>취업</b></span>
+            <span id="a school" style="
+            margin: 10px;
+            padding: 10px;
+            color: red;"><b>학습</b></span>
+            <span id="a etc" style="
+            margin: 10px;
+            padding: 10px;
+            color: red;"><b>기타</b></span>
+        </div> -->
     <div class="left">
         <ul>
             <li id="all">전체</li>
@@ -27,7 +61,6 @@
         </ul>
     </div>
     <div class="right">
-        <h3><b>전체</b></h3>
         <div class="row all">
             {% for study in studyList %}
                 <div class="col-sm-6 col-md-4">
@@ -40,6 +73,18 @@
                                 <p>{{study.contents}}</p>
                                 {{study.board_text}}  -->
                                 <p>모집 기간 : {{study.duration}}</p>
+                                {% if study.category == "어학" %}
+                                    <button class="btn btn-danger" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "취업" %}
+                                    <button class="btn btn-info" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "학습" %}
+                                    <button class="btn btn-warning" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "기타" %}
+                                    <button class="btn btn-success" style="float:right"> {{study.category}} </button>
+                                {% endif %}
                                 <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
                                 <p>온/오프라인 : {{study.onOff}}</p> -->
                                 <p>총 인원 : {{study.totalMember}}명</p>
@@ -51,7 +96,6 @@
                 </div>
             {% endfor %}
         </div>
-        <h3><b>어학</b></h3>
         <div class="row lang">
             {% for study in languageList %}
                 <div class="col-sm-6 col-md-4">
@@ -64,6 +108,18 @@
                                 <p>{{study.contents}}</p>
                                 {{study.board_text}}  -->
                                 <p>모집 기간 : {{study.duration}}</p>
+                                {% if study.category == "어학" %}
+                                    <button class="btn btn-danger" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "취업" %}
+                                    <button class="btn btn-info" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "학습" %}
+                                    <button class="btn btn-warning" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "기타" %}
+                                    <button class="btn btn-success" style="float:right"> {{study.category}} </button>
+                                {% endif %}
                                 <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
                                 <p>온/오프라인 : {{study.onOff}}</p> -->
                                 <p>총 인원 : {{study.totalMember}}명</p>
@@ -75,7 +131,6 @@
                 </div>
             {% endfor %}
         </div>
-        <h3><b>취업</b></h3>
         <div class="row job">
             {% for study in jobList %}
                 <div class="col-sm-6 col-md-4">
@@ -88,6 +143,18 @@
                                 <p>{{study.contents}}</p>
                                 {{study.board_text}}  -->
                                 <p>모집 기간 : {{study.duration}}</p>
+                                {% if study.category == "어학" %}
+                                    <button class="btn btn-danger" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "취업" %}
+                                    <button class="btn btn-info" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "학습" %}
+                                    <button class="btn btn-warning" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "기타" %}
+                                    <button class="btn btn-success" style="float:right"> {{study.category}} </button>
+                                {% endif %}
                                 <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
                                 <p>온/오프라인 : {{study.onOff}}</p> -->
                                 <p>총 인원 : {{study.totalMember}}명</p>
@@ -99,7 +166,6 @@
                 </div>
             {% endfor %}
         </div>
-        <h3><b>학습</b></h3>
         <div class="row school">
             {% for study in schoolList %}
                 <div class="col-sm-6 col-md-4">
@@ -112,6 +178,18 @@
                                 <p>{{study.contents}}</p>
                                 {{study.board_text}}  -->
                                 <p>모집 기간 : {{study.duration}}</p>
+                                {% if study.category == "어학" %}
+                                    <button class="btn btn-danger" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "취업" %}
+                                    <button class="btn btn-info" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "학습" %}
+                                    <button class="btn btn-warning" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "기타" %}
+                                    <button class="btn btn-success" style="float:right"> {{study.category}} </button>
+                                {% endif %}
                                 <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
                                 <p>온/오프라인 : {{study.onOff}}</p> -->
                                 <p>총 인원 : {{study.totalMember}}명</p>
@@ -123,7 +201,6 @@
                 </div>
             {% endfor %}
         </div>
-        <h3><b>기타</b></h3>
         <div class="row etc">
             {% for study in etcList %}
                 <div class="col-sm-6 col-md-4">
@@ -136,6 +213,18 @@
                                 <p>{{study.contents}}</p>
                                 {{study.board_text}}  -->
                                 <p>모집 기간 : {{study.duration}}</p>
+                                {% if study.category == "어학" %}
+                                    <button class="btn btn-danger" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "취업" %}
+                                    <button class="btn btn-info" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "학습" %}
+                                    <button class="btn btn-warning" style="float:right"> {{study.category}} </button>
+                                {% endif %}
+                                {% if study.category == "기타" %}
+                                    <button class="btn btn-success" style="float:right"> {{study.category}} </button>
+                                {% endif %}
                                 <!-- <p>오픈 채팅방 : {{study.kakao_url}}</p>
                                 <p>온/오프라인 : {{study.onOff}}</p> -->
                                 <p>총 인원 : {{study.totalMember}}명</p>
@@ -147,8 +236,13 @@
                 </div>
             {% endfor %}
         </div>
+    <!-- </div> -->
     </div>
     <script>
+        $(document).ready(function(){
+            $('.row').hide();
+            $('.all').show();
+        })
         $('#lang').click(function(){
             $('.row').hide();
             $('.lang').show();

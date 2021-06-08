@@ -133,6 +133,41 @@ def updateFinish(request, pk):
     url = "/study_list/"+str(pk)
     return redirect(url)
 
+def study_update(request, pk):
+    studyDetail = get_object_or_404(MyStudy, pk=pk)
+    return render(request, "app/my_group_update.html", {'studyList':studyDetail})
+
+def study_update_detail(request, pk):
+    if request.method=="POST":
+        print("??")
+        # study_form = StudyForm()
+        title = request.POST['title']
+        region = request.POST['region']
+        totalMember = request.POST['totalMember']
+        kakao_url = request.POST['kakao_url']
+        onOff = request.POST['onOff']
+        img_url = request.POST['img_url']
+        oneLine = request.POST['oneLine']
+        duration = request.POST['duration']
+        study_duration = request.POST['study_duration']
+        count = request.POST['count']
+        category = request.POST['category']
+        board_text = request.POST['board_text']
+        # MyStudy = study_form.save(commit=False)
+        # MyStudy = study_form.board_text.save(commit=False)
+        # author = request.POST['author']
+        author = request.user
+        MyStudy.objects.create(title = title,
+        region=region,totalMember=totalMember,
+        kakao_url=kakao_url,onOff=onOff,
+        img_url=img_url, oneLine=oneLine,
+        duration=duration, study_duration=study_duration,
+        count=count, category=category,board_text=board_text,
+        author = author
+        )
+        MyStudy.objects.get(pk=pk).delete()
+    return redirect("/study_list") 
+
 def qna_remove(request, pk):
     if request.method == "POST":
         QnA2.objects.get(pk=pk).delete()
@@ -172,6 +207,7 @@ def search(request):
 def create_study(request):
     #forms.py 이용
     if request.method=="POST":
+        print("??")
         # study_form = StudyForm()
         title = request.POST['title']
         region = request.POST['region']

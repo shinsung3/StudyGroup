@@ -45,7 +45,7 @@
                             {% if user.is_authenticated %} <!-- 로그인 여부 확인-->
                                 {% if user == studyDetails.author %}
                                     <button style="border: 3px solid darkgoldenrod; background-color: darkgoldenrod; color:white">
-                                        <a href="{% url 'update' pk=studyDetails.pk %}" style="text-decoration: none;" id="tag">모집마감</a>
+                                        <a href="{% url 'updateFinish' pk=studyDetails.pk %}" style="text-decoration: none;" id="tag">모집마감</a>
                                     </button>
                                 {% else %}
                                     <button style="border: 3px solid darkgoldenrod; background-color: darkgoldenrod; color:white">

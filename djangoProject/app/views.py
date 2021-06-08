@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import MyStudy, QnA1
+from .models import MyStudy, QnA2
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .forms import StudyForm
@@ -106,12 +106,12 @@ def logout(request):
 
 def study_list_detail(request, pk):
     studyDetail = get_object_or_404(MyStudy, pk=pk) #데이터 받아오기
-    contents = QnA1.objects.filter(study=studyDetail)
+    contents = QnA2.objects.filter(study=studyDetail.pk)
     auth.authenticate()
     if request.method == 'POST':
         writer = request.POST['writer']
         content = request.POST['contents']
-        QnA1.objects.create(study = studyDetail,
+        QnA2.objects.create(study = studyDetail,
         writer=writer, contents=content)
         url = "/study_list/"+str(pk)
         return redirect("/study_list/"+str(pk))
@@ -135,7 +135,7 @@ def updateFinish(request, pk):
 
 def qna_remove(request, pk):
     if request.method == "POST":
-        QnA1.objects.get(pk=pk).delete()
+        QnA2.objects.get(pk=pk).delete()
         return redirect("/study_list")
 
 def my_page(request):

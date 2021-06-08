@@ -29,19 +29,8 @@ class MyStudy(models.Model):
     def __str__(self):
         return self.title
 
-class QnA(models.Model):
-    study = models.ForeignKey(MyStudy, on_delete=models.CASCADE)
-    contents = models.CharField(max_length=500)
-    writer = models.CharField(max_length=500)
-
-    def publish(self):
-        self.save()
-
-    def __str__(self):
-        return self.title
-
-class QnA1(models.Model):
-    study = models.ForeignKey(MyStudy, on_delete=models.CASCADE)
+class QnA2(models.Model):
+    study = models.IntegerField()
     contents = models.CharField(max_length=500)
     writer = models.CharField(max_length=500)
 

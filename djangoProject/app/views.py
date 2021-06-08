@@ -138,6 +138,10 @@ def qna_remove(request, pk):
         QnA2.objects.get(pk=pk).delete()
         return redirect("/study_list")
 
+def study_remove(request, pk):
+    MyStudy.objects.get(pk=pk).delete()
+    return redirect("/study_list")
+
 def my_page(request):
     nameCheck = User.objects.filter()
     if request.method=="POST":

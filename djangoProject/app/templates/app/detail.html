@@ -16,7 +16,12 @@
         <div>
             <h5><b>작성자</b> {{studyDetails.author}} &nbsp<i class="fas fa-address-card" style="font-size: 20px;"></i></h5>
             {% if studyDetails.is_finish == "종료" %}
-                <b style="color: grey;">모집 마감 되었습니다.</b>
+                <div>
+                    <b style="color: grey;">모집 마감 되었습니다.</b>
+                </div>
+            {% endif %}
+            {% if user == studyDetails.author %}
+                <button class="btn btn-danger" style="float:right"> <a href="{% url 'study_remove' pk=studyDetails.pk %}">삭제하기</a> </button>
             {% endif %}
             <table class="table table-condensed" width="500px;">
                 <tr class="active">

@@ -111,7 +111,7 @@ def study_list_detail(request, pk):
     if request.method == 'POST':
         writer = request.POST['writer']
         content = request.POST['contents']
-        QnA2.objects.create(study = studyDetail,
+        QnA2.objects.create(study = studyDetail.pk,
         writer=writer, contents=content)
         url = "/study_list/"+str(pk)
         return redirect("/study_list/"+str(pk))
